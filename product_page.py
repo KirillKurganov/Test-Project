@@ -12,7 +12,7 @@ class ProductPage(BasePage):
         assert self.is_element_present(*ProductPageLocators.BOOK_NAME), 'Book is be away'
         message=self.browser.find_element(*ProductPageLocators.MESSAGE).text
         book=self.browser.find_element(*ProductPageLocators.BOOK_NAME).text
-        assert message=='Coders at Work has been added to your basket.', 'Message is not correct'
+        assert 'has been added to your basket.' in message, 'Message is not correct'
 
 
     def basket_price(self):
