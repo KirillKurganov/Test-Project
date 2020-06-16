@@ -1,5 +1,6 @@
 from .base_page import BasePage
 from .locators import ProductPageLocators
+from.locators import ProductLocators
 
 class ProductPage(BasePage):
     def add_to_basket(self):
@@ -20,6 +21,17 @@ class ProductPage(BasePage):
         price_book=self.browser.find_element(*ProductPageLocators.PRICE_PRODUCT).text
         price_basket=self.browser.find_element(*ProductPageLocators.PRICE_BASKET).text
         assert price_book in price_basket, 'PRICE IS NOT CORRECT'
+
+    def should_not_be_success_message(self):
+        assert self.is_not_element_present(*ProductLocators.SUCCESS_MESSAGE), 'Message is present'
+
+    def should_disappear_success_message(self):
+        assert self.is_disappeared(*ProductLocators.SUCCESS_MESSAGE), 'Message is not disapeared'
+
+
+
+
+
 
 
 
